@@ -3,6 +3,7 @@
 let
   llSrc = builtins.fetchGit {
     url = "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT";
+    rev = "4fad0cb92d6881438abfa0ffc2934689b6828dd3";
     submodules = true;
   };
 in
