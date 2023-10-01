@@ -9,22 +9,11 @@
     flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-linux" ] (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        llSrc = builtins.fetchGit {
-          url = "https://github.com/LiteLoaderQQNT/LiteLoaderQQNT";
-          submodules = true;
-        };
-        qqPkg = pkgs.qq;
-        llqqntPkg = pkgs.qq.overrideAttrs (oldAttrs: {
-          postInstall = ''
-            mkdir $out/opt/QQ/resources/app/LiteLoader
-            cp -r ${llSrc.outPath}/* $out/opt/QQ/resources/app/LiteLoader
-            sed -i 's/"main": ".\/app_launcher\/index.js"/"main": ".\/LiteLoader"/' $out/opt/QQ/resources/app/package.json
-          '';
-        });
+        
+        pkgsLocal = import ./pkgs { inherit pkgs; };
       in {
         packages = rec {
-          qq = qqPkg;
-          llqqnt = llqqntPkg;
+          llqqnt = pkgsLocal.llqqnt;
           default = llqqnt;
         };
       }
