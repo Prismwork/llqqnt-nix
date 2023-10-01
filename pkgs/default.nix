@@ -1,6 +1,4 @@
-{ lib, pkgs, ... }:
-
-with lib;
+{ pkgs, ... }:
 
 rec {
   llqqnt = import ./llqqnt.nix { inherit pkgs; };

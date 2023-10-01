@@ -1,6 +1,4 @@
-{ lib, pkgs, ... }:
-
-with lib;
+{ pkgs, ... }:
 
 let
   llSrc = builtins.fetchGit {
