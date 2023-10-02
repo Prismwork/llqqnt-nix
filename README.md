@@ -10,6 +10,6 @@
 
 摆了，自己整吧
 
-### [garnix]("https://garnix.io)
+### [garnix]("https://garnix.io")
 
 摆了，自己整吧
