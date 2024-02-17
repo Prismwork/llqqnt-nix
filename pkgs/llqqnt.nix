@@ -10,7 +10,7 @@ let
 in
 pkgs.qq.overrideAttrs (oldAttrs: {
   pname = "llqqnt";
-  version = "${oldAttrs.version}+llqqnt.${llVersion}"
+  version = "${oldAttrs.version}+llqqnt.${llVersion}";
 
   postInstall = ''
     substituteInPlace $out/opt/QQ/resources/app/app_launcher/index.js --replace 'require\(".*/launcher\.node"\)' 'require("${llSrc.outPath}");\n  require("./launcher.node")'
