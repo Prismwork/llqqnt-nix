@@ -17,8 +17,7 @@
       in {
         packages = rec {
           llqqnt = pkgsLocal.llqqnt;
-          qq-llqqnt = pkgsLocal.qq-llqqnt;
-          default = qq-llqqnt;
+          default = llqqnt;
         };
       }
     );

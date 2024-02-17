@@ -1,4 +1,4 @@
-{ stdenv, ... }:
+{ pkgs, ... }:
 
 let
   llVersion = "1.0.3";
@@ -8,8 +8,11 @@ let
     submodules = true;
   };
 in
-stdenv.mkDerivation rec {
+pkgs.qq.overrideAttrs (oldAttrs: {
   pname = "llqqnt";
-  version = "${llVersion}";
-  src = llSrc.outPath;
-}
+  version = "${oldAttrs.version}+llqqnt.${llVersion}"
+
+  postInstall = ''
+    substituteInPlace $out/opt/QQ/resources/app/app_launcher/index.js --replace 'require\(".*/launcher\.node"\)' 'require("${llSrc.outPath}");\n  require("./launcher.node")'
+  '';
+})
